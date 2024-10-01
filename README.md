@@ -122,10 +122,19 @@ In \`styles/primitives.ts\`, we define all the basic building blocks like colors
 ```ts
 // styles/primitives.ts
 export const colors = {
-  lightBackground: '#ffffff',
-  darkBackground: '#333333',
-  textPrimary: '#000000',
-  textSecondary: '#666666',
+  grey900: '#262a32',
+  grey800: '#2e343d',
+  grey700: '#373d48',
+  grey500: '#9fa8b6',
+  grey300: '#e3e5ea',
+  grey200: '#eeeff2',
+  grey100: '#f9fafb',
+  white: '#ffffff',
+  black: '#1e1e1e',
+  blue: '#0087f5',
+  red: '#c73232',
+  primary: '#adde34',
+  secondary: '#275347',
 };
 
 export const fontSizes = {
@@ -136,8 +145,21 @@ export const fontSizes = {
   boldHero: '48px',
 };
 
+export const radius = {
+  standard: '4px',
+  large: '12px',
+  exreme: '24px',
+};
+
+export const spacing = {
+  tightSpacing: '4px',
+  regularSpacing: '12px',
+  doubleSpacing: '24px',
+  sixTimesSpacing: '72px',
+};
+
 export const fonts = {
-  base: '"Helvetica Neue", Arial, sans-serif',
+    base: 'Inter, sans-serif',
 };
 ```
 
@@ -211,7 +233,7 @@ import { colors, fonts } from './primitives';
 
 export const lightTheme = {
   tokens: {
-    backgroundColor: colors.lightBackground,
+    backgroundColor: colors.grey900,
     textColor: colors.textPrimary,
     fontFamily: fonts.base,
   },
@@ -219,7 +241,7 @@ export const lightTheme = {
 
 export const darkTheme = {
   tokens: {
-    backgroundColor: colors.darkBackground,
+    backgroundColor: colors.grey200,
     textColor: colors.textSecondary,
     fontFamily: fonts.base,
   },
