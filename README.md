@@ -150,12 +150,53 @@ In \`styles/global.ts\`, we apply global styles to foundational HTML elements, u
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle<{ theme: any }>\`
-  body, html, #root {
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: \${({ theme }) => theme.tokens.backgroundColor};
-    color: \${({ theme }) => theme.tokens.textColor};
-    font-family: \${({ theme }) => theme.tokens.fontFamily};
+  }
+
+  html, body, #root {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    background-color: ${({ theme }) => theme.tokens.baseBackgroundColor}; 
+    color: ${({ theme }) => theme.tokens.baseTextColor};
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media (max-width: 768px) {
+      font-size: 14px; 
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0; 
+    font-weight: normal; 
+  }
+
+  p {
+    margin: 0; 
+  }
+
+  ul, ol {
+    padding: 0; 
+    list-style: none; 
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit; 
+  }
+
+  form {
+    width: 100%;
   }
 \`;
 ```
