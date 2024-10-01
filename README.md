@@ -234,7 +234,7 @@ import { colors, fonts } from './primitives';
 export const lightTheme = {
   tokens: {
     backgroundColor: colors.grey900,
-    textColor: colors.textPrimary,
+    textColor: colors.black,
     fontFamily: fonts.base,
   },
 };
@@ -242,7 +242,7 @@ export const lightTheme = {
 export const darkTheme = {
   tokens: {
     backgroundColor: colors.grey200,
-    textColor: colors.textSecondary,
+    textColor: colors.white,
     fontFamily: fonts.base,
   },
 };
@@ -277,25 +277,6 @@ export const boldHero = (color: string) => css\`
 \`;
 ```
 
-### Usage Example
-
-Here’s how you can use the text styles within a component:
-
-```tsx
-import React from 'react';
-import styled from 'styled-components';
-import { mediumHero } from '../styles/textStyles';
-
-const Heading = styled.h1\`
-  \${mediumHero('#000')};
-\`;
-
-const ExampleComponent = () => (
-  <Heading>Welcome to Our Website</Heading>
-);
-
-export default ExampleComponent;
-```
 
 ## 6. State Management
 
