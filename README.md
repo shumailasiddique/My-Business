@@ -187,8 +187,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: any }>\`
   body {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
-    background-color: ${({ theme }) => theme.tokens.baseBackgroundColor}; 
-    color: ${({ theme }) => theme.tokens.baseTextColor};
+    background-color: \${({ theme }) => theme.tokens.baseBackgroundColor}; 
+    color: \${({ theme }) => theme.tokens.baseTextColor};
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -277,48 +277,107 @@ export const boldHero = (color: string) => css\`
 \`;
 ```
 
+## 6. ThemeContext Setup
 
-## 6. State Management
+To manage light and dark theme preferences, set up the \`ThemeContext.tsx\`:
+
+```ts
+// src/contexts/ThemeContext.tsx
+import React, { createContext, useEffect, useState, ReactNode } from 'react';
+
+const ThemeContext = createContext({ isLightTheme: true, toggleTheme: () => {} });
+
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [isLightTheme, setIsLightTheme] = useState(true);
+
+  // Detect user preference for light theme
+  useEffect(() => {
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    setIsLightTheme(prefersLight);
+  }, []);
+
+  // Toggle between light and dark themes
+  const toggleTheme = () => {
+    setIsLightTheme(prevTheme => !prevTheme);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ isLightTheme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export default ThemeContext;
+```
+
+## 7. React Router Setup
+
+Add React Router to handle navigation in \`App.tsx\`:
+
+```ts
+// src/App.tsx
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+## 8. State Management
 
 - Use **Context API** to manage state, stored in the **local browser database** (e.g., localStorage or sessionStorage).
 - Keep all business logic (e.g., API calls) in \`Hooks\` or \`Utils\`. **Do not include logic in \`Components\` or \`Layouts\`.**
 
-## 7. Error Handling
+## 9. Error Handling
 
 - Standardize error handling using custom hooks (e.g., \`useApi\`) and components like \`Notification\` or \`Toast\` for consistent UI messaging.
 
-## 8. Accessibility
+## 10. Accessibility
 
 - Ensure all components are accessible and compliant with **WCAG** standards.
 - Use tools like **axe** or **Lighthouse** to audit accessibility.
 
-## 9. Performance Optimization
+## 11. Performance Optimization
 
 - Implement lazy loading, code splitting, and tree shaking.
 - Perform Lighthouse checks for performance, accessibility, and SEO.
 
-## 10. CI/CD Pipelines
+## 12. CI/CD Pipelines
 
 - Set up a CI/CD pipeline with **GitHub Actions**, **Travis CI**, or **CircleCI** to automate testing and deployment.
 
-## 11. Testing Strategy
+## 13. Testing Strategy
 
 - Use **Jest** or **React Testing Library** for unit testing and **Cypress** for end-to-end tests.
 - Organize tests in a \`tests\` or \`__tests__\` folder.
 
-## 12. Security
+## 14. Security
 
 - Ensure secure input sanitization, secure token handling, and secure cookie settings.
 
-## 13. Functional Programming Style
+## 15. Functional Programming Style
 
 We aim to follow a **functional programming** approach wherever possible. This helps to keep code more predictable, easier to test, and free from side effects. Here are some guidelines to follow:
 
 - **Pure Functions**: Aim to write pure functions that don’t modify outside variables or state. A pure function always produces the same output given the same input.
   
-- **Immutability**: Avoid mutating objects or arrays directly. Instead, return new objects or arrays with the necessary changes. For example, use `map`, `filter`, and `reduce` for handling arrays instead of loops that mutate them.
+- **Immutability**: Avoid mutating objects or arrays directly. Instead, return new objects or arrays with the necessary changes. For example, use \`map\`, \`filter\`, and \`reduce\` for handling arrays instead of loops that mutate them.
 
-- **Declarative over Imperative**: Emphasize **what** should be done rather than **how**. Use built-in array methods like `forEach`, `map`, and `filter` instead of manually iterating over data with loops.
+- **Declarative over Imperative**: Emphasize **what** should be done rather than **how**. Use built-in array methods like \`forEach\`, \`map\`, and \`filter\` instead of manually iterating over data with loops.
 
 - **Avoid Side Effects**: Keep functions side-effect free when possible. If side effects are needed (e.g., API calls, logging), isolate them in specific functions (e.g., hooks or utilities) that are designed to handle side effects.
 
@@ -328,14 +387,13 @@ We aim to follow a **functional programming** approach wherever possible. This h
 
 Following a functional programming style helps ensure the consistency, maintainability, and predictability of your codebase.
 
-
-## 14. Naming Conventions
+## 16. Naming Conventions
 
 Naming is crucial for creating clear, readable, and maintainable code. Consistent and logical naming helps all team members understand the purpose of variables, functions, components, and files at a glance. Here are some best practices for naming in this project:
 
 ### 1. **Descriptive and Specific**
    - Names should describe **what** the function, variable, or component is and **why** it exists, rather than **how** it works.
-   - Avoid overly generic names like `data`, `item`, or `handleClick`. Instead, aim for names like `userData`, `fetchUserDetails`, or `onSubmitForm` to add clarity.
+   - Avoid overly generic names like \`data\`, \`item\`, or \`handleClick\`. Instead, aim for names like \`userData\`, \`fetchUserDetails\`, or \`onSubmitForm\` to add clarity.
    
 ### 2. **Consistent Case Style**
    - Use **camelCase** for variables and function names:
@@ -354,8 +412,8 @@ Naming is crucial for creating clear, readable, and maintainable code. Consisten
 
 ### 3. **Avoid Abbreviations**
    - Avoid using short or cryptic abbreviations. It's better to be explicit, even if the name is slightly longer, to ensure readability.
-     - Instead of `usr`, use `user`.
-     - Instead of `btnClk`, use `handleButtonClick`.
+     - Instead of \`usr\`, use \`user\`.
+     - Instead of \`btnClk\`, use \`handleButtonClick\`.
 
 ### 4. **Boolean Variables Should Sound Like Questions**
    - For boolean variables or functions that return a boolean, name them like questions:
@@ -365,8 +423,8 @@ Naming is crucial for creating clear, readable, and maintainable code. Consisten
      ```
 
 ### 5. **Consistent Naming in Context**
-   - Maintain consistency in similar contexts. For example, if you name a function `getUserProfile`, ensure similar functions follow the same pattern (e.g., `getUserSettings`, `getUserOrders`).
-   
+   - Maintain consistency in similar contexts. For example, if you name a function \`getUserProfile\`, ensure similar functions follow the same pattern (e.g., \`getUserSettings\`, \`getUserOrders\`).
+
 ### 6. **Avoid Using Magic Numbers and Strings**
    - Instead of using hard-coded values, define constants with meaningful names:
      ```js
@@ -376,14 +434,14 @@ Naming is crucial for creating clear, readable, and maintainable code. Consisten
 
 ### 7. **File Naming**
    - Files should be named after the primary component, hook, or utility they export.
-   - React components should be named in **PascalCase** (e.g., `UserProfile.tsx`).
-   - Utility or helper functions should be named in **kebab-case** or **camelCase**, depending on the team's convention (e.g., `fetch-data.ts` or `fetchData.ts`).
+   - React components should be named in **PascalCase** (e.g., \`UserProfile.tsx\`).
+   - Utility or helper functions should be named in **kebab-case** or **camelCase**, depending on the team's convention (e.g., \`fetch-data.ts\` or \`fetchData.ts\`).
 
 ### 8. **Function Naming**
-   - Functions should describe an action, and where possible, be named with a verb (e.g., `fetchUser`, `updateProfile`, `handleSubmit`).
+   - Functions should describe an action, and where possible, be named with a verb (e.g., \`fetchUser\`, \`updateProfile\`, \`handleSubmit\`).
 
 ### 9. **Avoid Prefixing with Generic Words**
-   - Avoid naming things with generic prefixes like `data`, `info`, or `object`. Be more descriptive of what the variable or function holds or does:
+   - Avoid naming things with generic prefixes like \`data\`, \`info\`, or \`object\`. Be more descriptive of what the variable or function holds or does:
      ```js
      // Instead of
      const data = fetchData();
@@ -393,7 +451,6 @@ Naming is crucial for creating clear, readable, and maintainable code. Consisten
      ```
 
 ### 10. **Component Naming**
-   - React components should be named after what they render. For example, a component rendering user details should be named `UserDetails`, not just `Details` or `Component`.
+   - React components should be named after what they render. For example, a component rendering user details should be named \`UserDetails\`, not just \`Details\` or \`Component\`.
 
 By following these naming conventions, we ensure that the code remains self-documenting, making it easier for current and future developers to understand and work with the codebase.
-
