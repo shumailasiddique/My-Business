@@ -176,3 +176,91 @@ This document outlines the standard operating procedure for setting up front-end
 ## 12. Security
 
 - Ensure secure input sanitization, secure token handling, and secure cookie settings.
+
+## 13. Functional Programming Style
+
+We aim to follow a **functional programming** approach wherever possible. This helps to keep code more predictable, easier to test, and free from side effects. Here are some guidelines to follow:
+
+- **Pure Functions**: Aim to write pure functions that don’t modify outside variables or state. A pure function always produces the same output given the same input.
+  
+- **Immutability**: Avoid mutating objects or arrays directly. Instead, return new objects or arrays with the necessary changes. For example, use `map`, `filter`, and `reduce` for handling arrays instead of loops that mutate them.
+
+- **Declarative over Imperative**: Emphasize **what** should be done rather than **how**. Use built-in array methods like `forEach`, `map`, and `filter` instead of manually iterating over data with loops.
+
+- **Avoid Side Effects**: Keep functions side-effect free when possible. If side effects are needed (e.g., API calls, logging), isolate them in specific functions (e.g., hooks or utilities) that are designed to handle side effects.
+
+- **Higher-Order Functions**: Make use of higher-order functions (functions that take other functions as arguments or return functions) to keep your code DRY and reusable.
+
+- **Use Hooks for State**: Keep all state management, especially side effects like API calls, within hooks. This helps maintain a clear separation of concerns between your UI and logic.
+
+Following a functional programming style helps ensure the consistency, maintainability, and predictability of your codebase.
+
+
+## 14. Naming Conventions
+
+Naming is crucial for creating clear, readable, and maintainable code. Consistent and logical naming helps all team members understand the purpose of variables, functions, components, and files at a glance. Here are some best practices for naming in this project:
+
+### 1. **Descriptive and Specific**
+   - Names should describe **what** the function, variable, or component is and **why** it exists, rather than **how** it works.
+   - Avoid overly generic names like `data`, `item`, or `handleClick`. Instead, aim for names like `userData`, `fetchUserDetails`, or `onSubmitForm` to add clarity.
+   
+### 2. **Consistent Case Style**
+   - Use **camelCase** for variables and function names:
+     ```js
+     const userName = 'John';
+     function fetchUserDetails() {}
+     ```
+   - Use **PascalCase** for React components:
+     ```js
+     const UserProfile = () => { ... }
+     ```
+   - Use **kebab-case** for CSS classes or file names:
+     ```css
+     .user-profile { ... }
+     ```
+
+### 3. **Avoid Abbreviations**
+   - Avoid using short or cryptic abbreviations. It's better to be explicit, even if the name is slightly longer, to ensure readability.
+     - Instead of `usr`, use `user`.
+     - Instead of `btnClk`, use `handleButtonClick`.
+
+### 4. **Boolean Variables Should Sound Like Questions**
+   - For boolean variables or functions that return a boolean, name them like questions:
+     ```js
+     const isLoggedIn = true;
+     function hasAccess() {}
+     ```
+
+### 5. **Consistent Naming in Context**
+   - Maintain consistency in similar contexts. For example, if you name a function `getUserProfile`, ensure similar functions follow the same pattern (e.g., `getUserSettings`, `getUserOrders`).
+   
+### 6. **Avoid Using Magic Numbers and Strings**
+   - Instead of using hard-coded values, define constants with meaningful names:
+     ```js
+     const MAX_RETRY_ATTEMPTS = 3;
+     const DEFAULT_THEME = 'light';
+     ```
+
+### 7. **File Naming**
+   - Files should be named after the primary component, hook, or utility they export.
+   - React components should be named in **PascalCase** (e.g., `UserProfile.tsx`).
+   - Utility or helper functions should be named in **kebab-case** or **camelCase**, depending on the team's convention (e.g., `fetch-data.ts` or `fetchData.ts`).
+
+### 8. **Function Naming**
+   - Functions should describe an action, and where possible, be named with a verb (e.g., `fetchUser`, `updateProfile`, `handleSubmit`).
+
+### 9. **Avoid Prefixing with Generic Words**
+   - Avoid naming things with generic prefixes like `data`, `info`, or `object`. Be more descriptive of what the variable or function holds or does:
+     ```js
+     // Instead of
+     const data = fetchData();
+
+     // Prefer
+     const userData = fetchUserData();
+     ```
+
+### 10. **Component Naming**
+   - React components should be named after what they render. For example, a component rendering user details should be named `UserDetails`, not just `Details` or `Component`.
+
+By following these naming conventions, we ensure that the code remains self-documenting, making it easier for current and future developers to understand and work with the codebase.
+
