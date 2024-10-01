@@ -138,11 +138,11 @@ export const colors = {
 };
 
 export const fontSizes = {
-  small: '12px',
-  medium: '16px',
-  large: '24px',
-  mediumHero: '36px',
-  boldHero: '48px',
+  small: '0.75rem', /* 12px */
+  medium: '1rem',   /* 16px */
+  large: '1.5rem',  /* 24px */
+  mediumHero: '2.25rem', /* 36px */
+  boldHero: '3rem',      /* 48px */
 };
 
 export const radius = {
@@ -152,10 +152,10 @@ export const radius = {
 };
 
 export const spacing = {
-  tightSpacing: '4px',
-  regularSpacing: '12px',
-  doubleSpacing: '24px',
-  sixTimesSpacing: '72px',
+  tightSpacing: '0.25rem', /* 4px */
+  regularSpacing: '0.75rem', /* 12px */
+  doubleSpacing: '1.5rem', /* 24px */
+  sixTimesSpacing: '4.5rem', /* 72px */
 };
 
 export const fonts = {
