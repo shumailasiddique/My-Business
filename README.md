@@ -113,37 +113,126 @@ This document outlines the standard operating procedure for setting up front-end
     ├── tests
   ```
 
-## 5. Global Styles and Themes
+## 5. Global Styles, Themes, and Text Styles
 
-- Create \`styles/global.ts\` for global styles:
-  ```ts
-  import { createGlobalStyle } from 'styled-components';
+### Defining Primitives
 
-  export const GlobalStyles = createGlobalStyle<{ theme: any }>\`
-    body, html, #root {
-      margin: 0;
-      padding: 0;
-      background-color: \${({ theme }) => theme.tokens.backgroundColor};
-      color: \${({ theme }) => theme.tokens.textColor};
-      font-family: \${({ theme }) => theme.tokens.fontFamily};
-    }
-  \`;
-  ```
+In \`styles/primitives.ts\`, we define all the basic building blocks like colors, font sizes, and font families. These primitives are used throughout the project to ensure consistency in design.
 
-- Define primitives in \`styles/primitives.ts\`:
-  ```ts
-  export const colors = { lightBackground: '#ffffff', darkBackground: '#333333' };
-  export const fontSizes = { small: '12px', medium: '16px', large: '24px' };
-  export const fonts = { base: '"Helvetica Neue", Arial, sans-serif' };
-  ```
+```ts
+// styles/primitives.ts
+export const colors = {
+  lightBackground: '#ffffff',
+  darkBackground: '#333333',
+  textPrimary: '#000000',
+  textSecondary: '#666666',
+};
 
-- Define tokens for light and dark themes in \`styles/tokens.ts\`:
-  ```ts
-  import { colors, fonts } from './primitives';
+export const fontSizes = {
+  small: '12px',
+  medium: '16px',
+  large: '24px',
+  mediumHero: '36px',
+  boldHero: '48px',
+};
 
-  export const lightTheme = { tokens: { backgroundColor: colors.lightBackground } };
-  export const darkTheme = { tokens: { backgroundColor: colors.darkBackground } };
-  ```
+export const fonts = {
+  base: '"Helvetica Neue", Arial, sans-serif',
+};
+```
+
+### Global Styles
+
+In \`styles/global.ts\`, we apply global styles to foundational HTML elements, using the theme's tokens (which reference the primitives defined above).
+
+```ts
+// styles/global.ts
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyles = createGlobalStyle<{ theme: any }>\`
+  body, html, #root {
+    margin: 0;
+    padding: 0;
+    background-color: \${({ theme }) => theme.tokens.backgroundColor};
+    color: \${({ theme }) => theme.tokens.textColor};
+    font-family: \${({ theme }) => theme.tokens.fontFamily};
+  }
+\`;
+```
+
+### Theme Tokens
+
+In \`styles/tokens.ts\`, we define the light and dark themes. These tokens use the colors and fonts from \`primitives.ts\` to create the different theme settings.
+
+```ts
+// styles/tokens.ts
+import { colors, fonts } from './primitives';
+
+export const lightTheme = {
+  tokens: {
+    backgroundColor: colors.lightBackground,
+    textColor: colors.textPrimary,
+    fontFamily: fonts.base,
+  },
+};
+
+export const darkTheme = {
+  tokens: {
+    backgroundColor: colors.darkBackground,
+    textColor: colors.textSecondary,
+    fontFamily: fonts.base,
+  },
+};
+```
+
+### Text Styles
+
+In \`styles/textStyles.ts\`, we define reusable text styles for different font sizes and weights, ensuring consistency across components. These styles accept a \`color\` parameter to allow flexibility.
+
+```ts
+// styles/textStyles.ts
+import { css } from 'styled-components';
+import { textSizes, fonts } from './primitives';
+
+export const mediumHero = (color: string) => css\`
+  font-family: \${fonts.base};
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.62px;
+  font-size: \${textSizes.mediumHero};
+  color: \${color};
+\`;
+
+export const boldHero = (color: string) => css\`
+  font-family: \${fonts.base};
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: \${textSizes.boldHero};
+  color: \${color};
+\`;
+```
+
+### Usage Example
+
+Here’s how you can use the text styles within a component:
+
+```tsx
+import React from 'react';
+import styled from 'styled-components';
+import { mediumHero } from '../styles/textStyles';
+
+const Heading = styled.h1\`
+  \${mediumHero('#000')};
+\`;
+
+const ExampleComponent = () => (
+  <Heading>Welcome to Our Website</Heading>
+);
+
+export default ExampleComponent;
+```
 
 ## 6. State Management
 
