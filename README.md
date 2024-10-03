@@ -4,17 +4,17 @@ This document outlines the standard operating procedure for setting up front-end
 
 ## 1. Project Initialization
 
-\- Ensure \*\*Node.js\*\* and \*\*NPM\*\* are installed. You can verify your installation by running:
+- Ensure \*\*Node.js\*\* and \*\*NPM\*\* are installed. You can verify your installation by running:
 
  ```bash
-  node \-v
-  npm \-v
+  node -v
+  npm -v
  ```
 
-\- Install \*\*ngrok\*\* and set up an account if you don\'t already have one:
+- Install \*\*ngrok\*\* and set up an account if you don\'t already have one:
 
   1\. Visit the \[ngrok website\]\(https\:\/\/ngrok.com\/\) and sign up for a free account\.
-  2\. Download and install \*\*ngrok\*\* by following the platform\-specific installation instructions on their website\.
+  2\. Download and install \*\*ngrok\*\* by following the platform-specific installation instructions on their website\.
 
   To verify that ngrok is installed correctly, run:
   
@@ -24,7 +24,7 @@ This document outlines the standard operating procedure for setting up front-end
 
   This should display the version number of ngrok\.
 
-\- \*\*Authenticate ngrok\*\* with your account:
+- \*\*Authenticate ngrok\*\* with your account:
 
   After installing ngrok, you’ll need to authenticate it using your \*\*ngrok authtoken\*\*\.
   You can find the authtoken in your ngrok dashboard under \*\*Your Authtoken\*\*\.
@@ -32,44 +32,44 @@ This document outlines the standard operating procedure for setting up front-end
   Run the following command to authenticate:
 
  ```bash
-  ngrok config add\-authtoken \<your\-authtoken\>
+  ngrok config add-authtoken \<your-authtoken\>
  ```
 
-  Replace \`\<your\-authtoken\>\` with your actual token\.
+  Replace \`\<your-authtoken\>\` with your actual token\.
 
-\- Create a Vite, React, and TypeScript project:
+- Create a Vite, React, and TypeScript project:
 
  ```bash
-  npm create vite\@latest my\-project \-\- \-\-template react\-ts
-  cd my\-project
+  npm create vite\@latest my-project -- --template react-ts
+  cd my-project
   npm install
  ```
 
-\- Install \*\*wait\-on\*\* to ensure ngrok starts only after the Vite development server is ready:
+- Install \*\*wait-on\*\* to ensure ngrok starts only after the Vite development server is ready:
 
  ```bash
-  npm install wait\-on \-\-save\-dev
+  npm install wait-on --save-dev
  ```
 
-\- Update the \`scripts\` section in your \`package\.json\` to include \*\*wait\-on\*\* and \*\*ngrok\*\*:
+- Update the \`scripts\` section in your \`package\.json\` to include \*\*wait-on\*\* and \*\*ngrok\*\*:
 
   Open your \`package\.json\` and modify the \`dev\` script as follows:
 
  ```json
   "scripts": {
-    "dev": "vite & wait\-on http\:\/\/localhost\:5173 && ngrok http 5173",
-    "build": "tsc \-b && vite build",
+    "dev": "vite & wait-on http\:\/\/localhost\:5173 && ngrok http 5173",
+    "build": "tsc -b && vite build",
     "lint": "eslint \.",
     "preview": "vite preview"
   }
  ```
 
   This script:
-  \- Runs \`vite\` to start the local development server\.
-  \- Uses \`wait\-on\` to ensure the server at \`http\:\/\/localhost\:5173\` is fully running before starting ngrok\.
-  \- Exposes the development server over HTTPS using ngrok, making it accessible via a public URL\.
+  - Runs \`vite\` to start the local development server\.
+  - Uses \`wait-on\` to ensure the server at \`http\:\/\/localhost\:5173\` is fully running before starting ngrok\.
+  - Exposes the development server over HTTPS using ngrok, making it accessible via a public URL\.
 
-\- To start the development server and expose it with ngrok, run:
+- To start the development server and expose it with ngrok, run:
 
  ```bash
   npm run dev
@@ -78,7 +78,7 @@ This document outlines the standard operating procedure for setting up front-end
   You will receive a publicly accessible URL from ngrok, such as:
 
  ```
-  https\:\/\/\<random\-subdomain\>\.ngrok\-free\.app
+  https\:\/\/\<random-subdomain\>\.ngrok-free\.app
  ```
 
   Use this URL to share your local app or test it on external devices\.
