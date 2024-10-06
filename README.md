@@ -61,8 +61,12 @@ All text used in the application is sourced from the `./src/locales/*` directory
 Any new developer joining the company needs to spend as much time as necessary to become familiar with the boilerplate. This foundation is the bedrock of all our web projects, and a thorough understanding is crucial to ensure consistency and efficiency across the team.
 
 ## Key Features
-- **PWA Ready**: Basic configurations for a Progressive Web App are already in place.
-- **Standardized Styles Directory**: A styles directory structure that keeps styling organized and in sync with the Figma design.
+- **PWA Ready**: Essential configurations are included to provide a smooth Progressive Web App experience out of the box.
+- **Standardized Styles Directory**: A predefined styles directory ensures visual consistency across projects by aligning with Figma designs.
+- **State Management with Context API**: Pre-configured contexts for managing themes (`ThemeContext.tsx`) and authentication (`AuthContext.tsx`).
+- **Custom Hooks**: Example hooks (`useSignIn.tsx`) to demonstrate best practices in managing application functionality and state.
+- **Localization Support**: Easily manage and add new locales using the `./src/locales/*` directory and `./src/i18n.ts`.
+- **Consistent Application Structure**: Organized routes, pages, layouts, and components to ensure scalability and maintainability.
 
 ## Contribution Guidelines
 If you make improvements to the scaffolding that could benefit future projects, consider contributing back to this repository by submitting a pull request.
