@@ -1,1 +1,1 @@
-# New Project
+# PWA Scaffolding
