@@ -41,6 +41,25 @@ The application has the following structure:
 - **Layouts**: Layouts are used to define the overall structure of a page, providing a consistent look and feel across multiple pages.
 - **Components**: Components are reusable UI elements used within pages and layouts to build the interface.
 
+### 7. State and Themes Management
+
+The application stores state and themes using contexts:
+- **Theme Context**: Themes are handled using `ThemeContext.tsx`. This file provides an example of how to manage and apply different themes across the application.
+- **Auth Context**: Application state is handled using `AuthContext.tsx`. This context manages authentication state and serves as an example of handling global state within the application.
+
+### 8. Hooks Usage
+
+The scaffolding also includes an example of how hooks should be used:
+- **Custom Hook**: The `./src/hooks/useSignIn.tsx` file is an example of a custom hook that interacts with the `AuthContext.tsx` context and the `useSignIn.ts` page. This demonstrates the best practices for using hooks to manage functionality and state within the application.
+
+### 9. Localization
+
+All text used in the application is sourced from the `./src/locales/*` directory. When adding new locales, make sure to configure them in `./src/i18n.ts` to ensure they are properly included in the application.
+
+### 10. Onboarding New Developers
+
+Any new developer joining the company needs to spend as much time as necessary to become familiar with the boilerplate. This foundation is the bedrock of all our web projects, and a thorough understanding is crucial to ensure consistency and efficiency across the team.
+
 ## Key Features
 - **PWA Ready**: Basic configurations for a Progressive Web App are already in place.
 - **Standardized Styles Directory**: A styles directory structure that keeps styling organized and in sync with the Figma design.
