@@ -62,7 +62,7 @@ This document outlines the standard operating procedure for setting up front-end
     "lint": "eslint \.",
     "preview": "vite preview"
   }
- ```
+ ``` 
 
   This script:
   - Runs \`vite\` to start the local development server\.
