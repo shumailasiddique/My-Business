@@ -1,0 +1,16 @@
+{
+  "welcome": "Bienvenue dans Xavier",
+  "description": "Ceci est une application avec support multilingue.",
+  "sign_in": "Sign In",
+  "signing_in": "Signing in...",
+  "email": "Email",
+  "password": "Password",
+  "error_empty_fields": "Please fill in all fields.",
+  "error_invalid_credentials": "Invalid credentials.",
+  "quote1": "Le succès ne consiste pas seulement à conclure une vente, mais à construire une relation qui dure.",
+  "quote2": "La véritable mesure du succès n'est pas ce que vous accomplissez seul, mais ce que vous inspirez les autres à accomplir avec vous.",
+  "quote3": "Dans les affaires, chaque défi est une opportunité d'innover, et chaque innovation est un pas vers un succès durable.",
+  "quote4": "La croissance ne vient pas seulement de l'expansion de votre marché, mais de l'expansion de votre esprit et du potentiel de votre équipe.",
+  "quote5": "Les entreprises les plus prospères sont celles qui répondent non seulement aux besoins de leurs clients, mais aussi à leurs aspirations.",
+  "clear": "Clair"
+}

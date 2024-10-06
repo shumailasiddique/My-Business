@@ -1,0 +1,16 @@
+{
+  "welcome": "Bienvenue chez Xavier",
+  "description": "Cette application prend en charge plusieurs langues.",
+  "sign_in": "Se connecter",
+  "signing_in": "Connexion en cours...",
+  "email": "E-mail",
+  "password": "Mot de passe",
+  "error_empty_fields": "Veuillez remplir tous les champs.",
+  "error_invalid_credentials": "Identifiants invalides.",
+  "quote1": "El éxito no se trata solo de hacer una venta; se trata de construir una relación que perdure.",
+  "quote2": "La verdadera medida del éxito no es lo que logras por ti mismo, sino lo que inspiras a otros a lograr contigo.",
+  "quote3": "En los negocios, cada desafío es una oportunidad para innovar, y cada innovación es un paso hacia el éxito duradero.",
+  "quote4": "El crecimiento no proviene solo de expandir tu mercado, sino de expandir tu mentalidad y el potencial de tu equipo.",
+  "quote5": "Las empresas más exitosas no solo satisfacen las necesidades de sus clientes, sino también sus aspiraciones.",
+  "clear": "Claro"
+}
