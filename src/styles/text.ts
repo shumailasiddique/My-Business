@@ -1,4 +1,6 @@
 import { css } from 'styled-components';
+import { styled } from 'styled-components';
+
 
 export const fonts = {
   base: 'Inter, sans-serif',
@@ -123,3 +125,23 @@ export const text = {
   italicQuote,
   miniItalic,
 };
+
+export const Heading = styled.h1`
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.primary};
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+export const Paragraph = styled.p`
+  font-size: 1rem;
+  color: ${(props) => props.theme.colors.text};
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
+`;

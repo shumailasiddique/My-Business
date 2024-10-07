@@ -12,9 +12,9 @@ export default defineConfig({
       },
       manifest: {
         id: "/",
-        name: "Xavier | Business",
+        name: "My | Business",
         short_name: "Xavier",
-        description: "Xavier | Business Dashboard",
+        description: "My | Business Dashboard",
         theme_color: "#ffffff",
         background_color: "#ffffff",
         start_url: "/",

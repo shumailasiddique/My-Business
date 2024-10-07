@@ -1,3 +1,24 @@
+// src/styles/primitives.ts
+
+export const imageViewerStyles = {
+  container: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '411px',
+      height: '866px',
+      border: '2px solid #ccc', 
+      borderRadius: '8px', 
+      overflow: 'hidden',
+  },
+  image: {
+      maxWidth: '100%',
+      maxHeight: '100%',
+      objectFit: 'cover', // Or 'contain' based on your requirement
+  },
+};
+
+
 export const colors = {
   grey900: '#262a32',
   grey800: '#2e343d',

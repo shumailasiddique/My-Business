@@ -4,6 +4,7 @@ import useSignIn from "../hooks/useSignIn";
 import { useMediaQuery } from "react-responsive";
 import SignInLayout from "../layouts/SignIn";
 import LazyLoader from "../components/LazyLoader";
+import ImageViewer from "../components/ImageViewer";
 
 const FormButton = React.lazy(() => import("../components/FormButton"));
 
@@ -21,10 +22,13 @@ const SignInPage: React.FC = () => {
     loading,
     clearForm,
   } = useSignIn();
-
+  const imageUrl = '../../public/green-trees.png'; // Replace with your image path
+  const altText = 'Description of the image';
   return (
     <SignInLayout>
-      <div id="left"></div>
+      <div id="left">
+      <ImageViewer src={imageUrl} alt={altText} />
+      </div>
 
       <div id="right">
         <form onSubmit={(e) => e.preventDefault()}>
