@@ -26,7 +26,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({
     ) {
       return 'dark';
     }
-    return 'light';
+    return 'dark';
   };
 
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>(getPreferredTheme);

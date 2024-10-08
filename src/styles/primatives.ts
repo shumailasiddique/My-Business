@@ -1,4 +1,45 @@
-// src/styles/primitives.ts
+export const tokens = {
+  colors: {
+    light: {
+      primary: '#0070f3',
+      primaryHover: '#005bb5',
+      background: '#ffffff',
+      text: '#000000',
+      textSecondary: '#666666',
+      backgroundInput: '#f5f5f5',
+      error: '#ff0000',
+    },
+    dark: {
+      primary: '#79ffe1',
+      primaryHover: '#4cbcb0',
+      background: '#1e1e2d',
+      text: '#ffffff',
+      textSecondary: '#b0b0b0',
+      backgroundInput: '#333345',
+      error: '#ff6b6b',
+    },
+  },
+  fonts: {
+    light: {
+      large: '36px',
+      medium: '24px',
+      small: '18px',
+    },
+    dark: {
+      large: '36px',
+      medium: '24px',
+      small: '18px',
+    },
+  },
+};
+
+
+
+
+// Utility function to access theme colors
+export const getThemeColor = (theme: any, color: string) => theme.colors[color];
+
+
 
 export const imageViewerStyles = {
   container: {

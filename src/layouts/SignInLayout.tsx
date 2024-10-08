@@ -1,27 +1,26 @@
-import React from 'react';
 import styled from 'styled-components';
+import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ImageViewer from '../components/ImageViewer';
 
-const SignInLayout: React.FC = () => {
+interface SignInLayoutProps {
+  children: React.ReactNode;
+}
+
+interface StyledPageProps {
+  $isMobile: boolean;
+}
+
+const SignInLayout: React.FC<SignInLayoutProps> = ({ children }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  return (
-    <StyledPage $isMobile={isMobile}>
-      <div id="left">
-        <ImageViewer src="/../../public/green-trees.png" alt="My Business Signin" />
-      </div>
-      <div id="right">
-        {/* Other Sign In Components (form, etc.) */}
-      </div>
-    </StyledPage>
-  );
+  return <StyledPage $isMobile={isMobile}>{children}</StyledPage>;
 };
 
-const StyledPage = styled.div<{ $isMobile: boolean }>`
-  height: 100%;
-  padding: 36px;
+const StyledPage = styled.div<StyledPageProps>`
+  height: 100vh;
   display: flex;
+  justify-content: center;  // Center vertically
+  align-items: center;  // Center horizontally
   flex-direction: column;
 
   #left {
@@ -29,12 +28,14 @@ const StyledPage = styled.div<{ $isMobile: boolean }>`
   }
 
   #right {
-    max-width: ${(props) => (props.$isMobile ? '100%' : '700px')};
+    background-color: ${({ theme }) => theme.colors.background};
+    max-width: 400px; // Adjust as per design
     width: 100%;
     margin: 0 auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     text-align: center;
     height: 100%;
@@ -45,11 +46,11 @@ const StyledPage = styled.div<{ $isMobile: boolean }>`
 
     #left {
       display: block;
-      width: 30%;
+      width: 50%;  // Ensure the image takes 50% of the space
     }
 
     #right {
-      width: 70%;
+      width: 50%;
       padding-left: 50px;
       padding-right: 50px;
       align-items: flex-start;
