@@ -1,0 +1,16 @@
+{
+  "welcome": "Welcome to Xavier",
+  "description": "This application has multi-language support.",
+  "sign_in": "Sign In",
+  "signing_in": "Signing in...",
+  "email": "Email",
+  "password": "Password",
+  "error_empty_fields": "Please fill in all fields.",
+  "error_invalid_credentials": "Invalid credentials.",
+  "quote1": "Success is not just about making a sale; it's about building a relationship that lasts.",
+  "quote2": "The true measure of success is not what you accomplish on your own, but what you inspire others to achieve with you.",
+  "quote3": "In business, every challenge is an opportunity to innovate, and every innovation is a step towards lasting success.",
+  "quote4": "Growth comes not just from expanding your market, but from expanding your mindset and your team's potential.",
+  "quote5": "The most successful businesses are those that serve not just their customers' needs, but also their aspirations.",
+  "clear": "Clear"
+}
