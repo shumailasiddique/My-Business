@@ -20,21 +20,31 @@ const HeaderRoot = styled.form`
 `;
 
 const Header: FunctionComponent<HeaderType> = ({ className = "" }) => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form submission and page reload
-  };
   return (
     <HeaderRoot className={className}>
-     
+      <ModeDarkIcon />
       <QuoteScroller
         quoteText={`"Success is not just about making a sale; it's about building a relationship that lasts."`}
       />
- <TextInput
+      <TextInput
         textInputHeight="79px"
+        rectangleDivBorder="unset"
         password="Email:"
-        // Removed extra unnecessary props
+        passwordHeight="15.3px"
+        passwordColor="#fff"
+        showVectorIcon={false}
+        errorText="asdasd"
+        showErrorText={false}
+        textInputGap="25.7px"
+        
       />
-      <TextInput password="Password:" showVectorIcon errorText="Error Text" showErrorText />
+      <TextInput
+        password="Password:"
+        vector="/../../public/vector.svg"
+        showVectorIcon
+        errorText="Error Text"
+        showErrorText
+      />
       <FormButton buttonText="Sign In" clearText="Clear" />
     </HeaderRoot>
   );

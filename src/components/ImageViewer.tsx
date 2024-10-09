@@ -2,23 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ImageContainer = styled.div`
-  width: 100%;
-  height: 100vh;
+ height: 100vh;
+  width: 50%; /* 50% width for the left section */
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+  position: absolute;
+  height: calc(100% - 53px);
+  width: 29.93%;
+  top: 24px;
+  right: 68.32%;
+  bottom: 29px;
+  left: 1.75%;
+  border-radius: var(--large);
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  }
 `;
 
+
 const Image = styled.img`
-  width: 411px;
-  position: relative;
-  border-radius: var(--large);
-  max-height: 100%;
-  overflow: hidden;
-  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  max-width: 100%;
-  top:24px;
-  left:22px;
-  
+  margin: 0;
+  padding: 0; // Ensure no padding or margins around the image
 `;
 
 interface ImageViewerProps {

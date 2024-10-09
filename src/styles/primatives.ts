@@ -8,6 +8,7 @@ export const tokens = {
       textSecondary: '#666666',
       backgroundInput: '#f5f5f5',
       error: '#ff0000',
+      grey500: '#9fa8b6',
     },
     dark: {
       primary: '#79ffe1',
@@ -17,6 +18,7 @@ export const tokens = {
       textSecondary: '#b0b0b0',
       backgroundInput: '#333345',
       error: '#ff6b6b',
+      grey500: '#9fa8b6',
     },
   },
   fonts: {

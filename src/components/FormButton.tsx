@@ -1,114 +1,106 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useMediaQuery } from 'react-responsive';
-import { useTranslation } from 'react-i18next';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
 
-interface FormButtonProps {
-  children: React.ReactNode;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  onClear?: () => void;
-  disabled?: boolean;
-  [key: string]: any;
-}
-
-const FormButton: React.FC<FormButtonProps> = ({
-  children,
-  onClick,
-  onClear,
-  disabled = false,
-  ...rest
-}) => {
-  const { t } = useTranslation();
-  const isMobile = useMediaQuery({ maxWidth: 768 });
-
-  return (
-    <ButtonContainer $isMobile={isMobile}>
-      <Divider />
-      <ButtonGroup>
-        {!isMobile && (
-          <ClearButton
-            onClick={(e) => {
-              e.preventDefault();
-              if (onClear) onClear();
-            }}
-            $isMobile={isMobile}
-          >
-            {t('clear')}
-          </ClearButton>
-        )}
-        <StyledButton
-          onClick={onClick}
-          disabled={disabled}
-          $isMobile={isMobile}
-          {...rest}
-        >
-          {children}
-        </StyledButton>
-      </ButtonGroup>
-    </ButtonContainer>
-  );
+export type FormButtonType = {
+  className?: string;
+  buttonText?: string;
+  clearText?: string;
 };
 
-const ButtonContainer = styled.div<{ $isMobile: boolean }>`
-  width: 100%;
+const ButtonDivider = styled.div`
+  width: 439.8px;
+  height: 1px;
+  position: relative;
+  border-top: 1px solid var(--bordera);
+  box-sizing: border-box;
+`;
+const Clear = styled.div`
+  width: 117.9px;
+  height: 17.4px;
+  position: relative;
+  letter-spacing: -0.03em;
+  display: inline-block;
+  flex-shrink: 0;
+`;
+const ClearButton = styled.div`
+  height: 31.2px;
+  width: 116.9px;
   display: flex;
   flex-direction: column;
-  align-items: ${({ $isMobile }) => ($isMobile ? 'center' : 'flex-end')};
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-sm-8) 0px 0px;
+  box-sizing: border-box;
 `;
-
-const ButtonGroup = styled.div`
-  width: 100%;
+const SignIn = styled.div`
+  height: 19px;
+  width: 50px;
+  position: relative;
+  font-size: var(--regular-size);
+  letter-spacing: -0.03em;
+  font-family: var(--miniitalic);
+  color: var(--text);
+  text-align: left;
+  display: inline-block;
+  flex-shrink: 0;
+`;
+const SignInButton = styled.button`
+  cursor: pointer;
+  border: 2px solid var(--bordera);
+  padding: var(--padding-smi-6) var(--padding-78xl) var(--padding-smi-7);
+  background-color: var(--backgrounda);
+  height: 44.3px;
+  width: 243px;
+  border-radius: var(--tight);
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+`;
+const ButtonContent = styled.div`
+  width: 438.7px;
+  height: 44.3px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-59xl-8);
+`;
+const FormbuttonRoot = styled.div`
+  width: 438.8px;
+  height: 67px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-12xs) 0px 0px;
+  box-sizing: border-box;
+  gap: var(--gap-2xl-7);
+  text-align: center;
+  font-size: var(--regular-size);
+  color: var(--grey500);
+  font-family: var(--miniitalic);
 `;
 
-const Divider = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.colors.borderA};
-  margin-top: ${({ theme }) => theme.spacing.double};
-  margin-bottom: ${({ theme }) => theme.spacing.double};
-`;
-
-const StyledButton = styled.button<{ $isMobile: boolean }>`
-  ${({ theme }) => theme.typography.button};
-  padding: ${({ theme }) =>
-    `${theme.spacing.regular} ${theme.spacing.sixTimes}`};
-  border: 2px solid ${({ theme }) => theme.colors.borderA};
-  border-radius: 4px;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.backgroundA};
-  transition: background-color 0.3s ease;
-  width: ${({ $isMobile }) => ($isMobile ? '100%' : 'auto')};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundAHover};
-  }
-
-  &:disabled {
-    background-color: ${({ theme }) => theme.colors.backgroundA};
-    color: ${({ theme }) => theme.colors.text};
-    cursor: not-allowed;
-  }
-`;
-
-const ClearButton = styled.button<{ $isMobile: boolean }>`
-  ${({ theme }) => theme.typography.button};
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.text};
-  }
-
-  &:disabled {
-    color: ${({ theme }) => theme.colors.label};
-    cursor: not-allowed;
-  }
-`;
+const FormButton: FunctionComponent<FormButtonType> = ({
+  className = "",
+  buttonText = "Sign In",
+  clearText = "Clear",
+}) => {
+  return (
+    <FormbuttonRoot className={className}>
+      <ButtonDivider />
+      <ButtonContent>
+        <ClearButton>
+          <Clear>{clearText}</Clear>
+        </ClearButton>
+        <SignInButton>
+          <SignIn>{buttonText}</SignIn>
+        </SignInButton>
+      </ButtonContent>
+    </FormbuttonRoot>
+  );
+};
 
 export default FormButton;

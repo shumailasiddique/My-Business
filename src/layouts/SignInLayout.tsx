@@ -16,48 +16,37 @@ const SignInLayout: React.FC<SignInLayoutProps> = ({ children }) => {
   return <StyledPage $isMobile={isMobile}>{children}</StyledPage>;
 };
 
-const StyledPage = styled.div<StyledPageProps>`
-  height: 100vh;
-  display: flex;
-  justify-content: center;  // Center vertically
-  align-items: center;  // Center horizontally
-  flex-direction: column;
 
+const StyledPage = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  
   #left {
-    display: none;
+    width: 50%; /* Left section 50% */
   }
 
   #right {
-    background-color: ${({ theme }) => theme.colors.background};
-    max-width: 400px; // Adjust as per design
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
+    width: 50%; /* Right section 50% */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    height: 100%;
+    padding: 0 50px;
   }
 
-  @media (min-width: 769px) {
-    flex-direction: row;
+  @media (max-width: 768px) {
+    flex-direction: column;
 
     #left {
-      display: block;
-      width: 50%;  // Ensure the image takes 50% of the space
+      display: none;
     }
 
     #right {
-      width: 50%;
-      padding-left: 50px;
-      padding-right: 50px;
-      align-items: flex-start;
-      text-align: left;
-      justify-content: center;
+      width: 100%;
     }
   }
 `;
+
 
 export default SignInLayout;
