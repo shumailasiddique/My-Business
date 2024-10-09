@@ -126,7 +126,7 @@ const SignInForm: React.FC = () => {
 
         <Label>Password</Label>
         <InputField type="password" placeholder="Password" />
-        {isError && <ErrorText>Password is required</ErrorText>}
+        <ErrorText>Error!</ErrorText>
 
         <ButtonContainer>
           <FormButton disabled={isError}>Sign In</FormButton>
