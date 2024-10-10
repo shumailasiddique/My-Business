@@ -5,7 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import { openDB } from 'idb';
+import { openDB } from 'idb'; 
 
 interface AuthContextProps {
   isSignedIn: boolean;
