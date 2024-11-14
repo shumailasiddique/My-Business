@@ -19,15 +19,7 @@ export const lightTheme: DefaultTheme = {
     selected: colors.lime,
     error: colors.red,
   },
-  typography: {
-    button: text.regular(colors.grey700),
-    header: text.boldHero(colors.grey700),
-    base: text.regular(colors.grey500),
-    label: text.regular(colors.grey500),
-    input: text.regular(colors.grey700),
-    quote: text.italicQuote(colors.grey500),
-    error: text.miniItalic(colors.red),
-  },
+
 };
 
 export const darkTheme: DefaultTheme = {
@@ -47,13 +39,5 @@ export const darkTheme: DefaultTheme = {
     selected: colors.lime,
     error: colors.red,
   },
-  typography: {
-    button: text.regular(colors.grey500),
-    header: text.boldHero(colors.grey700),
-    base: text.regular(colors.grey200),
-    label: text.regular(colors.grey500),
-    input: text.regular(colors.white),
-    quote: text.italicQuote(colors.grey500),
-    error: text.miniItalic(colors.red),
-  },
+ 
 };

@@ -1,30 +1,46 @@
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components'; 
 export const GlobalStyles = createGlobalStyle`
-  body {
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
   }
 
-  h1, h2, p {
-    margin: 0;
-    padding: 0;
+  // Ensure responsive layout with mobile adjustments
+  @media (max-width: 768px) {
+    body {
+      font-size: 0.875rem;
+    }
+
+    .container {
+      padding: 0 20px; // Adjust padding for mobile
+    }
+
+    h1, h2, h3, h4 {
+      font-size: 1.5rem; // Responsive typography
+    }
   }
 
-  h1 {
-    font-size: 36px;
-    font-weight: bold;
-    color: ${({ theme }) => theme.colors.text}; // Make sure this matches your design
-  }
+  // Further mobile optimizations
+  @media (max-width: 480px) {
+    h1, h2, h3, h4 {
+      font-size: 1.25rem;
+    }
 
-  p {
-    font-size: 18px;
-    color: ${({ theme }) => theme.colors.textSecondary}; // Adjust text colors if needed
+    .container {
+      padding: 0 15px;
+    }
+
+    input, button {
+      font-size: 0.875rem; // Adjust form elements for small screens
+    }
   }
 `;
+
+
 const StyledPage = styled.div<StyledPageProps>`
   height: 100vh;
   display: flex;
@@ -66,3 +82,26 @@ const StyledPage = styled.div<StyledPageProps>`
   }
 `;
 
+
+/* fonts */
+export const FontFamily = {
+  regular: "Inter-Regular",
+  miniItalic: "Inter-Light",
+};
+/* font sizes */
+export const FontSize = {
+  regular_size: 16,
+  miniItalic_size: 13,
+};
+/* Colors */
+export const Color = {
+  label: "#9fa8b6",
+  red: "#c73232",
+  text: "#fff",
+  backgroundA: "#2e343d",
+  lime: "#adde34",
+};
+/* Style Variables */
+export const StyleVariable = {
+  tight: 4,
+};

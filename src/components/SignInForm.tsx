@@ -1,139 +1,180 @@
+import React from 'react';
 import styled from 'styled-components';
+import PasswordImage from '../assets/Vector.svg';
 
-const LogoContainer = styled.div`
-  width: 177px;
-  position: relative;
-  height: 73px;
-  margin-top: 160px;
-`;
-
-const Logo = styled.img`
-  width: 100%;
-  height: auto;
-`;
-
-const SuccessQuote = styled.i`
-  margin: 30px 0;
-  display: block;
-  letter-spacing: -0.03em;
-  line-height: 36px;
-  font-style: italic;
-  font-weight: 300;
-  color: #9fa8b6;
-  font-size: 25px;
-  text-align: left;
-  max-width: 100%;
-`;
-
-const FormContainer = styled.form`
+// Form container with centralized alignment and proper spacing
+const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  margin-top: 10%;
   width: 100%;
-  gap: 20px;
-  margin-top: 50px;
+  max-width: 428px;
+  padding: 0 8px;
+
+  @media (max-width: 768px) {
+    margin-top: 15%;
+    align-items: center;
+    max-width: 80%;
+    padding: 0 10px; /* Adjusted padding for mobile view */
+  }
 `;
 
+// Inner container for aligning label, input, and error text
+const InputWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 15px;
+  position: relative;
+`;
+
+// Label styling for the input fields
+const Label = styled.label`
+  font-size: 14px;
+  color: #cccccc;
+  margin-bottom: 8px;
+  display: block;
+`;
+
+// Input fields with updated styling based on Figma design
 const InputField = styled.input`
   width: 100%;
-  padding: 15px;
-  border-radius: var(--tight);
-  border: 2px solid #9fa8b6; /* Default border color */
-  background-color: #2e343d; /* Adjust to match design */
-  font-size: 16px;
+  padding: 12px; /* Adjusted padding */
+  border: 1px solid #333333;
+  border-radius: 6px;
+  background-color: #262A32;
   color: #ffffff;
+  font-size: 16px;
   outline: none;
+  height: 22px; /* Updated height to match Figma design */
+
 
   &:focus {
-    border-color: #adde34; /* Active border color as per design */
+    border-color: #6c8737;
   }
 
-  &::placeholder {
-    color: #9fa8b6; /* Placeholder color */
-    opacity: 1;
+  @media (max-width: 480px) {
+    height: 40px; /* Adjusted height for mobile */
   }
 `;
 
+// Password icon styling
+const PasswordIcon = styled.img`
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+
+  @media (max-width: 768px) {
+    right: 15px;
+  }
+
+  @media (max-width: 480px) {
+    right: 10px;
+    height: 20px;
+  }
+`;
+
+// Error message styling
+const ErrorMessage = styled.p`
+  font-size: 12px;
+  color: #ff4d4d;
+  margin: 5px 0;
+  text-align: left;
+`;
+
+// Horizontal line to separate the input fields and buttons
+const Divider = styled.hr`
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 20px 0;
+`;
+
+// Updated Submit button styling based on Figma design
+const SubmitButton = styled.button`
+  background-color: #2e343d;  /* Figma button background color */
+  color: #ffffff;
+  border: none;
+  padding: 14px 0;
+  width: 48%;  /* Ensures buttons are side by side */
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  height:42px;
+
+  &:hover {
+    background-color: #00aa33;  /* Darker shade on hover */
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; /* Ensures full-width button for mobile view */
+  }
+`;
+
+// Clear button styling
+const ClearButton = styled.button`
+  background-color: #262A32;
+  color: #ffffff;
+  border: none;
+  padding: 14px 0;
+  width: 48%;  /* Ensures buttons are side by side */
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  text-align: center;
+   height:42px;
+
+  &:hover {
+    background-color: #2e343d;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    display:none;
+  }
+`;
+
+// Button container for aligning buttons horizontally
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-const FormButton = styled.button`
-  width: 48%;
-  padding: 15px;
-  background-color: ${({ disabled }) => (disabled ? '#d3d3d3' : '#303030')};
-  border-radius: var(--tight);
-  border: none;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-`;
-
-const ClearButton = styled.button`
-  width: 48%;
-  padding: 15px;
-  background-color: #666666;
-  border-radius: var(--tight);
-  border: none;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-`;
-
-const SignInFormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  max-width: 450px;
-  margin: 0 auto;
-`;
-
-const Label = styled.label`
-  font-size: 16px;
-  color: #9fa8b6;
-  font-family: var(--regular);
-  display: block;
-  margin-bottom: 8px;
-`;
-
-const ErrorText = styled.div`
-  color: red;
-  font-size: 12px;
-  margin-top: -10px;
-  margin-bottom: 16px;
-`;
-
-const SignInForm: React.FC = () => {
-  const isError = false; // Add logic to handle error state
-
+// Main SignInForm component
+const SignInForm = () => {
   return (
-    <SignInFormWrapper>
-      <LogoContainer>
-        <Logo src="/public/Logo.svg" alt="Business Logo" />
-      </LogoContainer>
+    <FormContainer>
+      <InputWrapper>
+        <Label htmlFor="email">Email</Label>
+        <InputField type="email" id="email" />
+      </InputWrapper>
 
-      <SuccessQuote>
-        "Success is not just about making a sale; it's about building a relationship that lasts."
-      </SuccessQuote>
+      <InputWrapper>
+        <Label htmlFor="password">Password</Label>
+        <InputField type="password" id="password" />
+        <PasswordIcon src={PasswordImage} alt="password icon" />
+        <ErrorMessage>Error!</ErrorMessage>
+      </InputWrapper>
 
-      <FormContainer>
-        <Label>Email Address</Label>
-        <InputField type="email" placeholder="Email Address" />
-        {isError && <ErrorText>Email is required</ErrorText>}
+      {/* Adding the divider between input fields and buttons */}
+      <Divider />
 
-        <Label>Password</Label>
-        <InputField type="password" placeholder="Password" />
-        <ErrorText>Error!</ErrorText>
-
-        <ButtonContainer>
-          <FormButton disabled={isError}>Sign In</FormButton>
-          <ClearButton>Clear</ClearButton>
-        </ButtonContainer>
-      </FormContainer>
-    </SignInFormWrapper>
+      <ButtonContainer>
+        <SubmitButton>Sign In</SubmitButton>
+        <ClearButton>Clear</ClearButton>
+      </ButtonContainer>
+    </FormContainer>
   );
 };
 

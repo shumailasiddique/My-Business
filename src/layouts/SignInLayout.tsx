@@ -16,18 +16,17 @@ const SignInLayout: React.FC<SignInLayoutProps> = ({ children }) => {
   return <StyledPage $isMobile={isMobile}>{children}</StyledPage>;
 };
 
-
-const StyledPage = styled.div`
+const StyledPage = styled.div<StyledPageProps>`
   display: flex;
   justify-content: space-between;
   height: 100vh;
   
   #left {
-    width: 50%; /* Left section 50% */
+    width: 50%;
   }
 
   #right {
-    width: 50%; /* Right section 50% */
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,6 +43,22 @@ const StyledPage = styled.div`
 
     #right {
       width: 100%;
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #right {
+      padding: 15px;
+      input, button {
+        width: 90%;
+        max-width: 382px;
+        height: 55px; /* Updated height based on Figma */
+        font-size: 1rem;
+        padding: 12px 16px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+      }
     }
   }
 `;

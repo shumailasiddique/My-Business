@@ -12,7 +12,7 @@ const ImageContainer = styled.div`
   img {
   position: absolute;
   height: calc(100% - 53px);
-  width: 29.93%;
+  width: 40%;
   top: 24px;
   right: 68.32%;
   bottom: 29px;
@@ -35,9 +35,10 @@ const Image = styled.img`
 `;
 
 interface ImageViewerProps {
-  src: string;
-  alt: string;
+  src: "assets/green-trees.jpg";
+  alt: "Signin Image";
 }
+
 
 const ImageViewer: React.FC<ImageViewerProps> = ({ src, alt }) => {
   return (

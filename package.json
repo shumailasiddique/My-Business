@@ -40,7 +40,7 @@
     "prettier": "^3.3.3",
     "typescript": "^5.2.2",
     "vite": "^5.3.5",
-    "vite-plugin-pwa": "^0.20.1",
+    "vite-plugin-pwa": "^0.20.5",
     "wait-on": "^8.0.1"
   },
   "lint-staged": {

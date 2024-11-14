@@ -1,48 +1,42 @@
+
 import styled from 'styled-components';
 
 export const SignInFormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px; // Adjust spacing as per design
+  gap: 24px; // Adjust spacing as per design
   max-width: 400px;
   width: 100%;
 `;
 
 export const Input = styled.input`
-  padding: 15px; // Adjust padding for input fields
-  border: 1px solid ${({ theme }) => theme.colors.primary}; // Use design colors for borders
+  padding: 16px; // Adjust padding for input fields
+  border: 1px solid #388E3C; // Use forest green for borders
   border-radius: 8px;
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.backgroundInput}; // Background color for input
-  box-sizing: border-box;
+  color: #212121; // Text color
+  background-color: #F5F5F5; // Light grey for input background
 
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primaryHover}; // Border color on focus
+  &::placeholder {
+    color: #9E9E9E; // Lighter grey for placeholder text
   }
+`;
+
+export const ErrorText = styled.span`
+  color: #D32F2F; // Red for error text
+  font-size: 14px;
 `;
 
 export const Button = styled.button`
-  padding: 15px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: #388E3C; // Forest Green for the button
   color: white;
+  padding: 16px;
   border: none;
   border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  width: 100%;
-  box-sizing: border-box;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primaryHover};
+    background-color: #2E7D32; // Darker green on hover
   }
-`;
-
-export const ErrorText = styled.p`
-  color: ${({ theme }) => theme.colors.error};
-  font-size: 14px;
-  margin-top: -10px;
-  margin-bottom: 10px;
 `;
