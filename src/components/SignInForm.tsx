@@ -2,180 +2,112 @@ import React from 'react';
 import styled from 'styled-components';
 import PasswordImage from '../assets/Vector.svg';
 
-// Form container with centralized alignment and proper spacing
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-top: 10%;
   width: 100%;
-  max-width: 428px;
-  padding: 0 8px;
-
-  @media (max-width: 768px) {
-    margin-top: 15%;
-    align-items: center;
-    max-width: 80%;
-    padding: 0 10px; /* Adjusted padding for mobile view */
-  }
+  margin-top: 2rem;
 `;
 
-// Inner container for aligning label, input, and error text
 const InputWrapper = styled.div`
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
-// Label styling for the input fields
 const Label = styled.label`
   font-size: 14px;
-  color: #cccccc;
-  margin-bottom: 8px;
+  color: #9FA8B6;
+  margin-bottom: 0.5rem;
   display: block;
+  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+  opacity: 1;
+  text-transform: capitalize;
 `;
 
-// Input fields with updated styling based on Figma design
 const InputField = styled.input`
   width: 100%;
-  padding: 12px; /* Adjusted padding */
-  border: 1px solid #333333;
-  border-radius: 6px;
-  background-color: #262A32;
+  height: 50px;
+  padding: 0 1rem;
+  border: 2px solid #373D48;
+  border-radius: 4px;
+  background-color: #2E343D;
   color: #ffffff;
   font-size: 16px;
   outline: none;
-  height: 22px; /* Updated height to match Figma design */
-
+  box-sizing: border-box;
 
   &:focus {
-    border-color: #6c8737;
+    border-color: #ADDE34;
   }
 
-  @media (max-width: 480px) {
-    height: 40px; /* Adjusted height for mobile */
+  &::placeholder {
+    color: #9FA8B6;
   }
 `;
 
-// Password icon styling
 const PasswordIcon = styled.img`
   position: absolute;
-  right: 10px;
-  top: 50%;
+  right: 1rem;
+  top: 60%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-
-  @media (max-width: 768px) {
-    right: 15px;
-  }
-
-  @media (max-width: 480px) {
-    right: 10px;
-    height: 20px;
-  }
+  width: 17px;
+  height: 8px;
+  cursor: pointer;
 `;
 
-// Error message styling
-const ErrorMessage = styled.p`
-  font-size: 12px;
-  color: #ff4d4d;
-  margin: 5px 0;
-  text-align: left;
+const ErrorMessage = styled.span`
+  font-size: 13px;
+  color: #C73232;
+  margin-top: 0.5rem;
+  display: block;
+  font-style: italic;
+  letter-spacing: -0.03em;
 `;
 
-// Horizontal line to separate the input fields and buttons
-const Divider = styled.hr`
+const SignInButton = styled.button`
   width: 100%;
-  border: 0;
-  border-top: 1px solid #cccccc;
-  margin: 20px 0;
-`;
-
-// Updated Submit button styling based on Figma design
-const SubmitButton = styled.button`
-  background-color: #2e343d;  /* Figma button background color */
+  height: 50px;
+  background-color: #2E343D;
   color: #ffffff;
   border: none;
-  padding: 14px 0;
-  width: 48%;  /* Ensures buttons are side by side */
-  cursor: pointer;
-  border-radius: 6px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-  height:42px;
-
-  &:hover {
-    background-color: #00aa33;  /* Darker shade on hover */
-  }
-
-  @media (max-width: 768px) {
-    width: 100%; /* Ensures full-width button for mobile view */
-  }
-`;
-
-// Clear button styling
-const ClearButton = styled.button`
-  background-color: #262A32;
-  color: #ffffff;
-  border: none;
-  padding: 14px 0;
-  width: 48%;  /* Ensures buttons are side by side */
-  cursor: pointer;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 16px;
-  text-align: center;
-   height:42px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  letter-spacing: -0.03em;
 
   &:hover {
-    background-color: #2e343d;
-    color: #fff;
-  }
-
-  @media (max-width: 768px) {
-    display:none;
+    background-color: #373D48;
   }
 `;
 
-// Button container for aligning buttons horizontally
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-// Main SignInForm component
 const SignInForm = () => {
   return (
     <FormContainer>
       <InputWrapper>
-        <Label htmlFor="email">Email</Label>
-        <InputField type="email" id="email" />
+        <Label>Email:</Label>
+        <InputField type="email" placeholder="Enter your email" />
       </InputWrapper>
 
       <InputWrapper>
-        <Label htmlFor="password">Password</Label>
-        <InputField type="password" id="password" />
-        <PasswordIcon src={PasswordImage} alt="password icon" />
-        <ErrorMessage>Error!</ErrorMessage>
+        <Label>Password:</Label>
+        <InputField type="password" placeholder="Enter your password" />
+        <PasswordIcon src={PasswordImage} alt="toggle password" />
+        <ErrorMessage>Error Text</ErrorMessage>
       </InputWrapper>
 
-      {/* Adding the divider between input fields and buttons */}
-      <Divider />
-
-      <ButtonContainer>
-        <SubmitButton>Sign In</SubmitButton>
-        <ClearButton>Clear</ClearButton>
-      </ButtonContainer>
+      <SignInButton>Sign In</SignInButton>
     </FormContainer>
   );
 };
 
 export default SignInForm;
+

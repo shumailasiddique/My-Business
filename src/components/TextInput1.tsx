@@ -5,7 +5,6 @@ import PasswordImage from '../assets/Vector.svg';
 
 const TextinputChild = styled.input`position: absolute;
 width: 99.63%;
-top: 24px;
 right: 0.18%;
 left: 0.19%;
 border-radius: 4px;
@@ -17,7 +16,7 @@ height: 50px;
 `;
 const Password = styled.div`position: absolute;
 height: 19.33%;
-top: 0%;
+top: -1rem;
 left: 0px;
 letter-spacing: -0.03em;
 display: inline-block;
@@ -43,8 +42,10 @@ height: 75px;
 overflow: hidden;
 flex-shrink: 0;
 max-width:429px;
+margin:3.7rem 0 0 ;
 @media (max-width: 768px) {
  max-width:100%;
+ margin:0;
  }
 `;
 const TextinputItem = styled.input`position: absolute;

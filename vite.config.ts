@@ -56,4 +56,11 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+  publicDir: 'public',
+  assetsInclude: ['**/*.jpg', '**/*.png', '**/*.svg'],
 });

@@ -1,46 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const QuotescrollerParent = styled.div`
-    position: relative;
-    overflow: hidden;
-    align-self: stretch;
-    flex-shrink: 0;
+const QuoteContainer = styled.div`
     width: 100%;
-    max-width:428px;
-    height: 108px;
-    font-family: Inter;
+    max-width: 429px;
+    margin: 2.5rem 0;
+    position: relative;
+`;
+
+const QuoteText = styled.div`
     font-size: 25px;
-    color: #999b92;
+    color: #999B92;
+    font-family: Inter;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 36px;
+    letter-spacing: -0.03em;
+
     @media (max-width: 768px) {
-    display: none;  // Hide the image on mobile view
-  }
-}
+        display: none;
+    }
 `;
 
-
-const Quote = styled.i`position: absolute;
-width: 100%;
-top: calc(50% - 64px);
-left: 0%;
-letter-spacing: -0.03em;
-line-height: 36px;
-display: inline-block;
-font-weight: 300;
-`;
-        
-
-const Quotescroller: React.VFC = () => {
+const Quotescroller: React.FC = () => {
     return (
-        <QuotescrollerParent>
-        
-         
-         <Quote>"Success is not just about making a sale; it's about building a relationship that lasts."</Quote>
-         
-        </QuotescrollerParent>
-    )
-  }
-  export default Quotescroller;
-  
+        <QuoteContainer>
+            <QuoteText>
+                "Success is not just about making a sale; it's about building a relationship that lasts."
+            </QuoteText>
+        </QuoteContainer>
+    );
+};
 
-  
+export default Quotescroller;
